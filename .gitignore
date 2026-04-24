@@ -1,0 +1,8 @@
+*.o
+*.a
+*.out
+*.exe
+
+a.out
+cub3d
+mlx-test
