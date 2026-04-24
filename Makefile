@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/04/24 13:27:43 by alubrano         ###   ########.fr        #
+#    Updated: 2026/04/24 13:42:58 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
 # MiniLibX
-MLX_DIR		= MiniLibX
+MLX_DIR		= minilibx-linux
 MLX_LIB		= $(MLX_DIR)/libmlx.a
 MLX_INC		= -I$(MLX_DIR)
 MLX_LDFLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11
