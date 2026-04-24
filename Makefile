@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/04/24 15:44:00 by alubrano         ###   ########.fr        #
+#    Updated: 2026/04/24 15:48:10 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,8 @@ all: ${NAME}
 
 bonus: $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) -D BONUS=1 $(OBJS) $(LIBFT) -lreadline -o $(NAME)
-	@echo -e "$(GREEN)✓ Build OK: libft$(RESET)"
-	@echo -e "$(GREEN)✓ Build OK: bonus $(NAME)$(RESET)"
+	@echo "$(GREEN)✓ Build OK: libft$(RESET)"
+	@echo "$(GREEN)✓ Build OK: bonus $(NAME)$(RESET)"
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
@@ -91,8 +91,8 @@ $(MLX_LIB):
 
 $(NAME): $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
-	@echo -e "$(GREEN)✓ Build OK: libft$(RESET)"
-	@echo -e "$(GREEN)✓ Build OK: $(NAME)$(RESET)"
+	@echo "$(GREEN)✓ Build OK: libft$(RESET)"
+	@echo "$(GREEN)✓ Build OK: $(NAME)$(RESET)"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -108,16 +108,16 @@ $(OBJSF):
 clean:
 	@$(RM) -rf $(OBJS_DIR)
 	@$(RM) -f $(OBJSF)
-	@echo -e "$(RED)✗ Objects removed$(RESET)"
+	@echo "$(RED)✗ Objects removed$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo -e "$(RED)✗ $(NAME) removed$(RESET)"
+	@echo "$(RED)✗ $(NAME) removed$(RESET)"
 
 re: fclean all
 
 valgrind: all
-	@echo -e "$(YELLOW)🔍 Running valgrind...$(RESET)"
+	@echo "$(YELLOW)🔍 Running valgrind...$(RESET)"
 	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "$(ARGS)"
 
 .PHONY : all clean fclean re valgrind
