@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/04/27 14:03:44 by alubrano         ###   ########.fr        #
+#    Updated: 2026/04/27 15:59:09 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS_DIR 	= ./
 OBJS_DIR 	= obj/
 CC 			= cc
 RM 			= rm -f
-CFLAGS 		= -Wall -Wextra -Werror -g
+CFLAGS 		= -Wall -Wextra -Werror -g -I/usr/include/X11
 
 # Libft
 LIBFT_DIR	= libft
@@ -87,8 +87,9 @@ $(LIBFT):
 $(MLX_LIB):
 	@make -C $(MLX_DIR)
 
+
 $(NAME): $(MLX_LIB) $(LIBFT) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LIB) -lreadline -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(MLX_LIB) -lXext -lX11 -o $(NAME)
 	@echo "$(GREEN)✓ Build OK: libft$(RESET)"
 	@echo "$(GREEN)✓ Build OK: $(NAME)$(RESET)"
 
