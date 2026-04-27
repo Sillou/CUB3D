@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 15:09:16 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/24 15:16:20 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/27 13:55:50 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,10 @@ void	ft_clean(t_game *game)
 {
 	if (!game)
 		return ;
-	if (game)
-	{
-		if ()
-		{
+	// if (game)
+	// {
 
-		}
-		if ()
-		{
-
-		}
-		if ()
-		{
-
-		}
-		if ()
-		{
-
-		}
-	}
+	// }
 	free (game);
 	game = NULL;
 }
