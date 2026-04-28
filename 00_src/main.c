@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:16:29 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/27 19:21:48 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/28 20:24:43 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int	main(int argc, char **argv)
 
 	game = ft_calloc(1, sizeof(t_game));
 	check_args(argc, argv, game);
+	printf("NO : %s \n", game->config.no);
+	printf("SO : %s\n", game->config.so);
+	printf("WE : %s\n", game->config.we);
+	printf("EA : %s\n", game->config.ea);
 	ft_clean(game);
 	return (0);
 }

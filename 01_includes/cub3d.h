@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 20:14:45 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/28 23:09:45 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 
 /************************************/
@@ -71,6 +72,8 @@ typedef struct s_config
 	char	*ea;
 	t_color	floor;
 	t_color	ceiling;
+	int		floor_set;
+	int		ceiling_set;
 }	t_config;
 
 // typedef struct s_player
@@ -108,7 +111,6 @@ typedef struct s_game
 	// t_player	player;
 	// t_mlx		mlx;
 	// t_tex		tex;
-	int	test;
 
 }	t_game;
 
@@ -130,14 +132,24 @@ void	check_args(int argc, char **argv, t_game *game);
 
 /*chech_map.c*/
 void	check_map(char *argv, t_game *game);
+void	add_map_line(char *line, t_game *game);
+
 
 /*parse_map.c*/
 int		parse_befor_map(char *line, t_game *game);
-int		ft_is_space(char line);
 
-/*pase_texture.c*/
+/*parse_texture.c*/
 void	ft_texture(char *line, t_game *game);
 
+/*parse_color.c*/
+void	add_color(char *line, char str, t_game *game, int i);
+
+/*pars_utils.c*/
+int		ft_is_space(char line);
+int		skip_spaces(char *line, int i);
+
+/*check_valid_map.c*/
+void	check_valid_map(t_game *game);
 
 /************************************/
 /*				INIT				*/
@@ -162,6 +174,9 @@ void	ft_texture(char *line, t_game *game);
 void	msg_error(char *str, char *error_msg, t_game *game, int code);
 void	ft_clean(t_game *game);
 
+/*free_mem.c*/
+void	free_map(t_game *game);
+void	free_config(t_game *game);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:15:42 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 18:23:01 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/28 22:55:59 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,35 @@ void	check_map(char *argv, t_game *game)
 	while (line)
 	{
 		if (!map_start)
-			map_start = parse_befor_map(line, game); //TODO
+		{
+			map_start = parse_befor_map(line, game);
+			if (map_start)
+				add_map_line(line, game);
+		}
 		else
-			add_map_line(line, game);//TODO
+			add_map_line(line, game);
 		free(line);
 		line = get_next_line(fd);
 	}
 	close (fd);
-	check_config(game); // TODO
+	check_valid_map(game);
 	return ;
 }
 
+void	add_map_line(char *line, t_game *game)
+{
+	char	**new_map;
+	int		i;
+
+	i = game->map.hight;
+	new_map = ft_calloc(i + 2, sizeof(char *));
+	if (!new_map)
+		msg_error("malloc failed", NULL, game, 1);
+	while (i-- > 0)
+		new_map[i] = game->map.map[i];
+	free(game->map.map);
+	game->map.map = new_map;
+	game->map.map[game->map.hight] = ft_strdup(line);
+	game->map.map[game->map.hight + 1] = NULL;
+	game->map.hight += 1;
+}
