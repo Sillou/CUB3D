@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:16:29 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/27 13:53:45 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/27 19:21:48 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_game *game;
 
 	game = ft_calloc(1, sizeof(t_game));
-	check_map(argc, argv, game);
-
+	check_args(argc, argv, game);
+	ft_clean(game);
+	return (0);
 }

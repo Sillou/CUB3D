@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/04/27 15:59:09 by alubrano         ###   ########.fr        #
+#    Updated: 2026/04/27 16:13:18 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC_DIR		= 01_includes
 LIBFT_DIR	= libft
 SRCS_DIR 	= ./
 OBJS_DIR 	= obj/
-CC 			= cc
+CC 			= gcc-11
 RM 			= rm -f
 CFLAGS 		= -Wall -Wextra -Werror -g -I/usr/include/X11
 
@@ -85,7 +85,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 $(MLX_LIB):
-	@make -C $(MLX_DIR)
+	@make -C $(MLX_DIR) CC=gcc-11
 
 
 $(NAME): $(MLX_LIB) $(LIBFT) $(OBJS)
@@ -100,8 +100,8 @@ $(OBJSF):
 	@mkdir -p $(OBJS_DIR)
 	@mkdir -p $(OBJS_DIR)$(PARSING)
 	@mkdir -p $(OBJS_DIR)$(INIT)
-	@mkdir -p $(OBJS_DIR)$(RAYCAST)
-	@mkdir -p $(OBJS_DIR)$(MOVES)
+	@mkdir -p $(OBJS_DIR)$(RAYCASTING)
+	@mkdir -p $(OBJS_DIR)$(MOVEMENTS)
 	@mkdir -p $(OBJS_DIR)$(EXIT)
 
 clean:
