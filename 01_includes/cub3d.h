@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 16:39:48 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/28 20:14:45 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
+# include <unistd.h>
+# include <stdlib.h>
+
 
 /************************************/
 /*				MSG_ERROR			*/
@@ -45,18 +48,30 @@
 /*				STRUCT				*/
 /************************************/
 
-// typedef struct s_map
-// {
-// 	tableau de la Map
-// 	largeur
-// 	longeur
-// }	t_map;
+typedef struct s_map
+{
+	char	**map;
+	int		width;
+	int		hight;
+}	t_map;
 
-// typedef struct s_config
-// {
-// 	chemin des textures
-// 	couleur floor/ ceiling
-// }	t_config;
+typedef struct s_color
+{
+	int		r;
+	int		g;
+	int		b;
+}	t_color;
+
+
+typedef struct s_config
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	t_color	floor;
+	t_color	ceiling;
+}	t_config;
 
 // typedef struct s_player
 // {
@@ -88,8 +103,8 @@
 
 typedef struct s_game
 {
-	// t_map		map;
-	// t_config	config;
+	t_map		map;
+	t_config	config;
 	// t_player	player;
 	// t_mlx		mlx;
 	// t_tex		tex;
@@ -110,8 +125,18 @@ int	main(int argc, char **argv);
 /*				PARSING				*/
 /************************************/
 
-/*validation.c*/
+/*check_args.c*/
 void	check_args(int argc, char **argv, t_game *game);
+
+/*chech_map.c*/
+void	check_map(char *argv, t_game *game);
+
+/*parse_map.c*/
+int		parse_befor_map(char *line, t_game *game);
+int		ft_is_space(char line);
+
+/*pase_texture.c*/
+void	ft_texture(char *line, t_game *game);
 
 
 /************************************/
@@ -134,7 +159,7 @@ void	check_args(int argc, char **argv, t_game *game);
 /************************************/
 
 /*close.c*/
-void	msg_error(char *str, char *error_msg, t_game *game);
+void	msg_error(char *str, char *error_msg, t_game *game, int code);
 void	ft_clean(t_game *game);
 
 

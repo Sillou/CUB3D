@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/04/27 16:13:18 by alubrano         ###   ########.fr        #
+#    Updated: 2026/04/28 19:31:57 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ MLX_LDFLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11
 MAIN = 00_src/main
 
 PARSING = 00_src/00_parsing/
-PARS =	validation
+PARS =	check_args	check_map parse_map	pase_texture
 
 INIT = 00_src/01_init/
 INI = init
