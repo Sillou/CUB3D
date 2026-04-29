@@ -6,18 +6,22 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:54:40 by alubrano          #+#    #+#             */
-/*   Updated: 2025/12/19 14:24:46 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:32:52 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_gnl_free(char **ptr)
+static char	*ft_gnl_clear_static(char **static_str)
 {
-	if (*ptr)
+	int	i;
+
+	i = 0;
+	while (i < FD_GNL_MAX)
 	{
-		free(ptr);
-		ptr = NULL;
+		free(static_str[i]);
+		static_str[i] = NULL;
+		i++;
 	}
 	return (NULL);
 }
@@ -76,19 +80,17 @@ static char	*ft_gnl_add_line(int fd, char *line_buffer, char *buffer)
 		b_read = read(fd, buffer, BUFFER_GNL_SIZE);
 		if (b_read == -1)
 		{
-			free(buffer);
 			free(line_buffer);
-			return (NULL);
+			line_buffer = NULL;
 		}
-		if (b_read == 0)
+		if (b_read <= 0)
 			break ;
 		buffer[b_read] = '\0';
 		tmp = line_buffer;
 		line_buffer = ft_strjoin(tmp, buffer);
-		if (!line_buffer)
-			return (ft_gnl_free(&buffer));
 		free(tmp);
-		tmp = NULL;
+		if (!line_buffer)
+			break ;
 	}
 	free(buffer);
 	return (line_buffer);
@@ -101,9 +103,11 @@ char	*get_next_line(int fd)
 	char		*tmp;
 	char		*buffer;
 
+	if (fd == -1)
+		return (ft_gnl_clear_static(static_str));
 	if (fd < 0 || fd > FD_GNL_MAX)
 		return (NULL);
-	if (fd < 0 || BUFFER_GNL_SIZE <= 0)
+	if (BUFFER_GNL_SIZE <= 0)
 		return (NULL);
 	buffer = malloc(sizeof(char) * (BUFFER_GNL_SIZE + 1));
 	if (!buffer)

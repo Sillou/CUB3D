@@ -19,6 +19,7 @@ void	msg_error(char *str, char *error_msg, t_game *game, int code)
 	print_error(str, error_msg);
 	if (game)
 		ft_clean(game);
+	get_next_line(-1);
 	exit(code);
 }
 

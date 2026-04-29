@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 23:09:45 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:10:37 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	add_color(char *line, char str, t_game *game, int i);
 /*pars_utils.c*/
 int		ft_is_space(char line);
 int		skip_spaces(char *line, int i);
+
 
 /*check_valid_map.c*/
 void	check_valid_map(t_game *game);
