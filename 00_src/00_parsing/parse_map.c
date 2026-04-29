@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 18:16:16 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 14:46:33 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:56:51 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	parse_befor_map(char *line, t_game *game)
 		return (0);
 	if (is_map(line, game))
 		return (1);
+	free(line);
 	msg_error("Invalid line in file", NULL, game, 1);
 	return (0);
 }

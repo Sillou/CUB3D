@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 21:52:55 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 22:53:36 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:34:15 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,20 @@ void	add_color(char *line, char str, t_game *game, int i)
 	i++;
 	while (ft_is_space(line[i]))
 		i++;
-	if (str == 'F')
+	if (str == 'F' && game->config.floor_set == 0)
 	{
 		add_f(line, i, game);
 		game->config.floor_set = 1;
 	}
-	else if (str == 'C')
+	else if (str == 'C' && game->config.ceiling_set == 0)
 	{
 		add_c(line, i, game);
 		game->config.ceiling_set = 1;
+	}
+	else
+	{
+		free(line);
+		msg_error(DOUBLE, NULL, game, 1);
 	}
 }
 

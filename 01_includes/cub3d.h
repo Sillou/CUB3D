@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 16:02:54 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:33:59 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define WG_INPUT2 "Map missing Ex : ./cub3d ./path_to_the_map/map.cub"
 # define WG_INPUT3 "Wrong extention Ex : ./cub3d ./path_to_the_map/map.cub"
 # define WG_FILE "Is a directory"
+# define DOUBLE "Error: duplicate floor/ceiling color (F or C)"
 
 
 /************************************/

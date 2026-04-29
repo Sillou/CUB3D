@@ -52,7 +52,8 @@ static char	*extract_texture_path(char *line, int i, t_game *game)
 	{
 		free(path);
 		path = NULL;
-		msg_error("Invalid XPM path", path, game, 1);
+		free(line);
+		msg_error("Invalid XPM path", NULL, game, 1);
 	}
 	close(fd);
 	return (path);
