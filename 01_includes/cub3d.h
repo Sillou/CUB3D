@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 15:18:25 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:02:54 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ typedef struct s_player
 	// angle ou vecteur directionels
 }	t_player;
 
-// typedef struct s_mlx
-// {
-// 	pointeur mlx
-// 	fenetre
-// 	image buffer
-// }	t_mlx;
+typedef struct s_mlx
+{
+	void	*mlx;
+	// fenetre
+	// image buffer
+}	t_mlx;
 
 // typedef struct s_tex
 // {
@@ -109,7 +109,7 @@ typedef struct s_game
 	t_map		map;
 	t_config	config;
 	t_player	player;
-	// t_mlx		mlx;
+	t_mlx		mlx;
 	// t_tex		tex;
 
 }	t_game;
