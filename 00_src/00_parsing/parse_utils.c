@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 22:36:48 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 13:10:34 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:51:11 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int	skip_spaces(char *line, int i)
 {
 	while (ft_is_space(line[i]))
 		i++;
-	return i;
+	return (i);
 }

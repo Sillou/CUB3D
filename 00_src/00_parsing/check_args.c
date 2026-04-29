@@ -6,14 +6,14 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 14:49:41 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 23:13:15 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:50:55 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static bool	is_dir(char *argv);
-static void	check_file(char *argv, t_game * game);
+static void	check_file(char *argv, t_game *game);
 
 void	check_args(int argc, char **argv, t_game *game)
 {
@@ -38,7 +38,7 @@ static bool	is_dir(char *argv)
 	bool	ret;
 
 	ret = false;
-	fd = open(argv,__O_DIRECTORY);
+	fd = open(argv, __O_DIRECTORY);
 	if (fd >= 0)
 	{
 		close (fd);
@@ -47,7 +47,7 @@ static bool	is_dir(char *argv)
 	return (ret);
 }
 
-static void	check_file(char *argv, t_game * game)
+static void	check_file(char *argv, t_game *game)
 {
 	int	fd;
 

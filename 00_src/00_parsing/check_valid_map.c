@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 22:50:41 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 15:21:31 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:49:51 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	check_config_complete(t_game *game)
 	if (!game->config.ceiling_set)
 		msg_error("Missing ceiling color (C)", NULL, game, 1);
 }
-
 
 static void	check_map_chars(t_game *game)
 {
@@ -100,4 +99,3 @@ void	check_valid_map(t_game *game)
 	check_map_chars(game);
 	check_map_closed(game);
 }
-

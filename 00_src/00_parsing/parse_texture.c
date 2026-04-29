@@ -6,18 +6,19 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 19:24:09 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 13:28:36 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:49:12 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
 static char	*extract_texture_path(char *line, int i, t_game *game);
 
 void	ft_texture(char *line, t_game *game)
 {
-	int i;
+	int	i;
+
+	i = 0;
 	i = skip_spaces(line, 0);
 	if (!ft_strncmp(&line[i], "NO", 2) && game->config.no == NULL)
 		game->config.no = extract_texture_path(line, i + 2, game);
@@ -45,7 +46,7 @@ static char	*extract_texture_path(char *line, int i, t_game *game)
 	path = ft_strdup(&line[i]);
 	len = ft_strlen(path);
 	while (len > 0 && (path[len - 1] == '\n' || path[len - 1] == '\r'
-		|| path[len - 1] == ' ' || path[len - 1] == '\t'))
+			|| path[len - 1] == ' ' || path[len - 1] == '\t'))
 		path[--len] = '\0';
 	fd = open(path, O_RDONLY);
 	if (fd == -1)

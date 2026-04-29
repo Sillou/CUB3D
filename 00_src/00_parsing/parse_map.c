@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 18:16:16 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 18:56:51 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:48:00 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,3 @@ static int	is_empty_line(char *line)
 	}
 	return (1);
 }
-

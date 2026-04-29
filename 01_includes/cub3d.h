@@ -6,12 +6,12 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 18:33:59 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:55:33 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D
-# define CUB3D
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "mlx.h"
 # include "libft.h"
@@ -25,7 +25,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-
 /************************************/
 /*				MSG_ERROR			*/
 /************************************/
@@ -36,7 +35,6 @@
 # define WG_FILE "Is a directory"
 # define DOUBLE "Error: duplicate floor/ceiling color (F or C)"
 
-
 /************************************/
 /*				MACROS				*/
 /************************************/
@@ -44,7 +42,6 @@
 # ifdef BONUS
 #  define BONUS 1
 # endif
-
 
 /************************************/
 /*				STRUCT				*/
@@ -63,7 +60,6 @@ typedef struct s_color
 	int		g;
 	int		b;
 }	t_color;
-
 
 typedef struct s_config
 {
@@ -104,7 +100,6 @@ typedef struct s_mlx
 // 	infos dun rayon pendant le rendu
 // }	t_ray;
 
-
 typedef struct s_game
 {
 	t_map		map;
@@ -112,17 +107,14 @@ typedef struct s_game
 	t_player	player;
 	t_mlx		mlx;
 	// t_tex		tex;
-
 }	t_game;
-
 
 /************************************/
 /*				MAIN				*/
 /************************************/
 
 /*main.c*/
-int	main(int argc, char **argv);
-
+int		main(int argc, char **argv);
 
 /************************************/
 /*				PARSING				*/
@@ -134,7 +126,6 @@ void	check_args(int argc, char **argv, t_game *game);
 /*chech_map.c*/
 void	check_map(char *argv, t_game *game);
 void	add_map_line(char *line, t_game *game);
-
 
 /*parse_map.c*/
 int		parse_befor_map(char *line, t_game *game);
@@ -149,14 +140,12 @@ void	add_color(char *line, char str, t_game *game, int i);
 int		ft_is_space(char line);
 int		skip_spaces(char *line, int i);
 
-
 /*check_valid_map.c*/
 void	check_valid_map(t_game *game);
 
 /*check_valid_map2.c*/
 void	check_color_range(t_color color, char *name, t_game *game);
 int		is_player(char c);
-
 
 /************************************/
 /*				INIT				*/
@@ -169,11 +158,9 @@ void	init_start(t_game *game);
 /*				RAYCAST				*/
 /************************************/
 
-
 /************************************/
 /*				MOVES				*/
 /************************************/
-
 
 /************************************/
 /*				EXIT				*/
@@ -186,6 +173,5 @@ void	ft_clean(t_game *game);
 /*free_mem.c*/
 void	free_map(t_game *game);
 void	free_config(t_game *game);
-
 
 #endif

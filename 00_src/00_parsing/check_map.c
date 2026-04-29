@@ -6,12 +6,11 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:15:42 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 15:02:36 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:50:10 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 void	check_map(char *argv, t_game *game)
 {
