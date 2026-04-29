@@ -6,16 +6,11 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 22:50:41 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 22:53:25 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 15:21:31 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static int	is_player(char c)
-{
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
-}
 
 static void	check_config_complete(t_game *game)
 {
@@ -28,13 +23,6 @@ static void	check_config_complete(t_game *game)
 		msg_error("Missing ceiling color (C)", NULL, game, 1);
 }
 
-static void	check_color_range(t_color color, char *name, t_game *game)
-{
-	if (color.r < 0 || color.r > 255
-		|| color.g < 0 || color.g > 255
-		|| color.b < 0 || color.b > 255)
-		msg_error("Color value out of range (0-255)", name, game, 1);
-}
 
 static void	check_map_chars(t_game *game)
 {
@@ -52,7 +40,11 @@ static void	check_map_chars(t_game *game)
 			if (!ft_strchr("01 \t\rNSEW", game->map.map[row][col]))
 				msg_error("Invalid character in map", NULL, game, 1);
 			if (is_player(game->map.map[row][col]))
+			{
+				game->player.x = col;
+				game->player.y = row;
 				players++;
+			}
 			col++;
 		}
 		row++;

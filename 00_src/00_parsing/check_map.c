@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:15:42 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 22:55:59 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 15:02:36 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	add_map_line(char *line, t_game *game)
 {
 	char	**new_map;
 	int		i;
+	int		l;
 
 	i = game->map.hight;
 	new_map = ft_calloc(i + 2, sizeof(char *));
@@ -58,4 +59,7 @@ void	add_map_line(char *line, t_game *game)
 	game->map.map[game->map.hight] = ft_strdup(line);
 	game->map.map[game->map.hight + 1] = NULL;
 	game->map.hight += 1;
+	l = ft_strlen(line);
+	if (l > game->map.width)
+		game->map.width = l - 1;
 }

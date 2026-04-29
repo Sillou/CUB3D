@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 13:10:37 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/29 15:18:25 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ typedef struct s_config
 	int		ceiling_set;
 }	t_config;
 
-// typedef struct s_player
-// {
-// 	int		x;
-// 	int		y;
-// 	direction initiale
-// 	angle ou vecteur directionels
-// }	t_player;
+typedef struct s_player
+{
+	int		x;
+	int		y;
+	// direction initiale
+	// angle ou vecteur directionels
+}	t_player;
 
 // typedef struct s_mlx
 // {
@@ -108,7 +108,7 @@ typedef struct s_game
 {
 	t_map		map;
 	t_config	config;
-	// t_player	player;
+	t_player	player;
 	// t_mlx		mlx;
 	// t_tex		tex;
 
@@ -152,10 +152,17 @@ int		skip_spaces(char *line, int i);
 /*check_valid_map.c*/
 void	check_valid_map(t_game *game);
 
+/*check_valid_map2.c*/
+void	check_color_range(t_color color, char *name, t_game *game);
+int		is_player(char c);
+
+
 /************************************/
 /*				INIT				*/
 /************************************/
 
+/*init_to_start.c*/
+void	init_start(t_game *game);
 
 /************************************/
 /*				RAYCAST				*/
