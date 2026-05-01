@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 23:04:30 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/28 23:10:35 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/30 18:11:33 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	free_map(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map.map[i])
+	while (game->map.full[i])
 	{
-		free(game->map.map[i]);
+		free(game->map.full[i]);
 		i++;
 	}
-	free(game->map.map);
-	game->map.map = NULL;
+	free(game->map.full);
+	game->map.full = NULL;
 }
 
 void	free_config(t_game *game)
@@ -48,4 +48,15 @@ void	free_config(t_game *game)
 		free(game->config.ea);
 		game->config.ea = NULL;
 	}
+}
+
+void	free_mlx(t_game *g)
+{
+	if (g->mlx.img)
+		mlx_destroy_image(g->mlx.mlx, g->mlx.img);
+	if (g->mlx.win)
+		mlx_destroy_window(g->mlx.mlx, g->mlx.win);
+	if (g->mlx.mlx)
+		mlx_destroy_display(g->mlx.mlx);
+	free(g->mlx.mlx);
 }

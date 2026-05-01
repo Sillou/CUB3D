@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:15:42 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 20:50:10 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/30 18:05:26 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	add_map_line(char *line, t_game *game)
 	if (!new_map)
 		msg_error("malloc failed", NULL, game, 1);
 	while (i-- > 0)
-		new_map[i] = game->map.map[i];
-	free(game->map.map);
-	game->map.map = new_map;
-	game->map.map[game->map.hight] = ft_strdup(line);
-	game->map.map[game->map.hight + 1] = NULL;
+		new_map[i] = game->map.full[i];
+	free(game->map.full);
+	game->map.full = new_map;
+	game->map.full[game->map.hight] = ft_strdup(line);
+	game->map.full[game->map.hight + 1] = NULL;
 	game->map.hight += 1;
 	l = ft_strlen(line);
 	if (l > game->map.width)

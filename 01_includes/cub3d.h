@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 20:55:33 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/01 12:26:37 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,26 @@
 /*				STRUCT				*/
 /************************************/
 
+typedef struct s_colors
+{
+	unsigned int wall;
+	unsigned int floor;
+	unsigned int player;
+} t_colors;
+
 typedef struct s_map
 {
-	char	**map;
+	char	**full;
 	int		width;
 	int		hight;
-}	t_map;
+} t_map;
 
 typedef struct s_color
 {
 	int		r;
 	int		g;
 	int		b;
-}	t_color;
+} t_color;
 
 typedef struct s_config
 {
@@ -71,22 +78,30 @@ typedef struct s_config
 	t_color	ceiling;
 	int		floor_set;
 	int		ceiling_set;
-}	t_config;
+} t_config;
 
 typedef struct s_player
 {
 	int		x;
 	int		y;
+	int	cx;
+	int	cy;
+	int	dx;
+	int	dy;
 	// direction initiale
 	// angle ou vecteur directionels
-}	t_player;
+} t_player;
 
 typedef struct s_mlx
 {
 	void	*mlx;
-	// fenetre
-	// image buffer
-}	t_mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+} t_mlx;
 
 // typedef struct s_tex
 // {
@@ -106,8 +121,9 @@ typedef struct s_game
 	t_config	config;
 	t_player	player;
 	t_mlx		mlx;
-	// t_tex		tex;
-}	t_game;
+	t_colors	colors;
+	int		tile;
+} t_game;
 
 /************************************/
 /*				MAIN				*/
@@ -154,6 +170,13 @@ int		is_player(char c);
 /*init_to_start.c*/
 void	init_start(t_game *game);
 
+/*init_mlx.c*/
+void	init_mlx(t_game *game);
+
+/*init_map2D.c*/
+void	ft_map(t_game *game);
+
+
 /************************************/
 /*				RAYCAST				*/
 /************************************/
@@ -162,6 +185,9 @@ void	init_start(t_game *game);
 /*				MOVES				*/
 /************************************/
 
+/*moves.c*/
+int	ft_keycode_input(int key, t_game *game);
+
 /************************************/
 /*				EXIT				*/
 /************************************/
@@ -169,9 +195,13 @@ void	init_start(t_game *game);
 /*close.c*/
 void	msg_error(char *str, char *error_msg, t_game *game, int code);
 void	ft_clean(t_game *game);
+int		ft_close_window(t_game *game);
+
 
 /*free_mem.c*/
 void	free_map(t_game *game);
 void	free_config(t_game *game);
+void	free_mlx(t_game *game);
+
 
 #endif

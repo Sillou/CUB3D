@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 22:50:41 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 20:49:51 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/04/30 18:05:26 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	check_map_chars(t_game *game)
 	while (row < game->map.hight)
 	{
 		col = 0;
-		while (game->map.map[row][col] && game->map.map[row][col] != '\n')
+		while (game->map.full[row][col] && game->map.full[row][col] != '\n')
 		{
-			if (!ft_strchr("01 \t\rNSEW", game->map.map[row][col]))
+			if (!ft_strchr("01 \t\rNSEW", game->map.full[row][col]))
 				msg_error("Invalid character in map", NULL, game, 1);
-			if (is_player(game->map.map[row][col]))
+			if (is_player(game->map.full[row][col]))
 			{
 				game->player.x = col;
 				game->player.y = row;
@@ -76,14 +76,14 @@ static void	check_map_closed(t_game *game)
 	while (row < game->map.hight)
 	{
 		col = 0;
-		while (game->map.map[row][col] && game->map.map[row][col] != '\n')
+		while (game->map.full[row][col] && game->map.full[row][col] != '\n')
 		{
-			if (game->map.map[row][col] == '0'
-				|| is_player(game->map.map[row][col]))
-				if (is_open(game->map.map, row - 1, col, game->map.hight)
-					|| is_open(game->map.map, row + 1, col, game->map.hight)
-					|| is_open(game->map.map, row, col - 1, game->map.hight)
-					|| is_open(game->map.map, row, col + 1, game->map.hight))
+			if (game->map.full[row][col] == '0'
+				|| is_player(game->map.full[row][col]))
+				if (is_open(game->map.full, row - 1, col, game->map.hight)
+					|| is_open(game->map.full, row + 1, col, game->map.hight)
+					|| is_open(game->map.full, row, col - 1, game->map.hight)
+					|| is_open(game->map.full, row, col + 1, game->map.hight))
 					msg_error("Map is not closed by walls", NULL, game, 1);
 			col++;
 		}
