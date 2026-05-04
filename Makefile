@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/05/01 11:31:02 by alubrano         ###   ########.fr        #
+#    Updated: 2026/05/04 14:38:30 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ LIBFT		= $(LIBFT_DIR)/libft.a
 MLX_DIR		= minilibx-linux
 MLX_LIB		= $(MLX_DIR)/libmlx.a
 MLX_INC		= -I$(MLX_DIR)
-MLX_LDFLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11
+MLX_LDFLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 
 #Sources
@@ -51,7 +51,7 @@ INIT = 00_src/01_init/
 INI = init_to_start	init_mlx	init_map_2D
 
 RAYCASTING = 00_src/02_raycasting/
-RAYCAST = raycast
+RAYCAST = init_raycast	raycast
 
 MOVEMENTS = 00_src/03_movements/
 MOVES = moves
@@ -90,7 +90,7 @@ $(MLX_LIB):
 
 
 $(NAME): $(MLX_LIB) $(LIBFT) $(OBJS)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(MLX_LIB) -lXext -lX11 -o $(NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(MLX_LIB) -lXext -lX11 -lm -o $(NAME)
 	@echo "$(GREEN)✓ Build OK: libft$(RESET)"
 	@echo "$(GREEN)✓ Build OK: $(NAME)$(RESET)"
 

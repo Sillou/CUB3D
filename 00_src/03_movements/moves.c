@@ -6,42 +6,66 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:06:57 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/01 12:35:55 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 13:14:19 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
-void	ft_move_it(t_game *game, int w, int z)
+static void	ft_rotate(t_game *game, double rot);
+static void	ft_move(t_game *game, double dx, double dy);
+
+static void	ft_rotate(t_game *game, double rot)
 {
-	int	x;
-	int	y;
+	double	old_dir_x;
+	double	old_plane_x;
 
-	x = game->player.x;
-	y = game->player.y;
-	game->map.full[y][x] = '0';
-	game->player.x += z;
-	game->player.y += w;
-	game->map.full[game->player.y][game->player.x] = 'N';
-	ft_map(game);
+	old_dir_x = game->player.dir_x;
+	old_plane_x = game->player.plane_x;
+	game->player.dir_x = game->player.dir_x * cos(rot)
+		- game->player.dir_y * sin(rot);
+	game->player.dir_y = old_dir_x * sin(rot)
+		+ game->player.dir_y * cos(rot);
+	game->player.plane_x = game->player.plane_x * cos(rot)
+		- game->player.plane_y * sin(rot);
+	game->player.plane_y = old_plane_x * sin(rot)
+		+ game->player.plane_y * cos(rot);
+}
+
+static void	ft_move(t_game *game, double dx, double dy)
+{
+	double	new_x;
+	double	new_y;
+
+	new_x = game->player.pos_x + dx;
+	new_y = game->player.pos_y + dy;
+	if (game->map.full[(int)new_y][(int)game->player.pos_x] != '1')
+		game->player.pos_y = new_y;
+	if (game->map.full[(int)game->player.pos_y][(int)new_x] != '1')
+		game->player.pos_x = new_x;
 }
 
 int	ft_keycode_input(int key, t_game *game)
 {
-	int	x;
-	int	y;
-
-	x = game->player.x;
-	y = game->player.y;
-	// if ((key == 65363 || key == 100) && game->map.full[y][x + 1] != '1')
-	// 	ft_move_it(game, 0, +1);
-	// if ((key == 65361 || key == 97) && game->map.full[y][x - 1] != '1')
-	// 	ft_move_it(game, 0, -1);
-	if ((key == 65362 || key == 119) && game->map.full[y - 1][x] != '1')
-		ft_move_it(game, -1, 0);
-	if ((key == 65364 || key == 115) && game->map.full[y + 1][x] != '1')
-		ft_move_it(game, +1, 0);
-	if (key == 65307)
+	if (key == 65361)
+		ft_rotate(game, ROT_SPEED);
+	else if (key == 65363)
+		ft_rotate(game, -ROT_SPEED);
+	else if (key == 119 || key == 65362)
+		ft_move(game, game->player.dir_x * MOVE_SPEED,
+			game->player.dir_y * MOVE_SPEED);
+	else if (key == 115 || key == 65364)
+		ft_move(game, -game->player.dir_x * MOVE_SPEED,
+			-game->player.dir_y * MOVE_SPEED);
+	else if (key == 100)
+		ft_move(game, game->player.plane_x * MOVE_SPEED,
+			game->player.plane_y * MOVE_SPEED);
+	else if (key == 97)
+		ft_move(game, -game->player.plane_x * MOVE_SPEED,
+			-game->player.plane_y * MOVE_SPEED);
+	else if (key == 65307)
 		msg_error("EXIT GAME", NULL, game, 0);
+	ft_raycast(game);
 	return (0);
 }

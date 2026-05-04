@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/01 12:26:37 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 14:37:58 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@
 # ifdef BONUS
 #  define BONUS 1
 # endif
+
+# define WIN_W 1280
+# define WIN_H 720
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.03
 
 /************************************/
 /*				STRUCT				*/
@@ -84,13 +89,32 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
-	int	cx;
-	int	cy;
-	int	dx;
-	int	dy;
-	// direction initiale
-	// angle ou vecteur directionels
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 } t_player;
+
+typedef struct s_ray
+{
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+} t_ray;
 
 typedef struct s_mlx
 {
@@ -102,18 +126,6 @@ typedef struct s_mlx
 	int		line_length;
 	int		endian;
 } t_mlx;
-
-// typedef struct s_tex
-// {
-// 	texture chargees
-// 	dimensions
-// 	acces pixel
-// }	t_tex;
-
-// typedef struct s_ray
-// {
-// 	infos dun rayon pendant le rendu
-// }	t_ray;
 
 typedef struct s_game
 {
@@ -174,19 +186,26 @@ void	init_start(t_game *game);
 void	init_mlx(t_game *game);
 
 /*init_map2D.c*/
-void	ft_map(t_game *game);
+void	ft_init_player_dir(t_game *game);
 
 
 /************************************/
 /*				RAYCAST				*/
 /************************************/
 
+/*inti_raycast.c*/
+void	ft_init_ray(t_game *game, t_ray *ray, int x);
+
+/*raycast.c*/
+void	ft_raycast(t_game *game);
+
 /************************************/
+
 /*				MOVES				*/
 /************************************/
 
 /*moves.c*/
-int	ft_keycode_input(int key, t_game *game);
+int		ft_keycode_input(int key, t_game *game);
 
 /************************************/
 /*				EXIT				*/

@@ -22,6 +22,12 @@ void	init_start(t_game *game)
 	game->map.width = 0;
 	game->player.x = 0;
 	game->player.y = 0;
+	game->player.pos_x = 0.0;
+	game->player.pos_y = 0.0;
+	game->player.dir_x = 0.0;
+	game->player.dir_y = 0.0;
+	game->player.plane_x = 0.0;
+	game->player.plane_y = 0.0;
 	game->config.floor_set = 0;
 	game->config.floor.r = 0;
 	game->config.floor.g = 0;
