@@ -26,8 +26,9 @@ void	init_mlx(t_game *game)
 	game->mlx.addr = mlx_get_data_addr(game->mlx.img, &game->mlx.bpp,
 			&game->mlx.line_length, &game->mlx.endian);
 	ft_init_player_dir(game);
-	mlx_key_hook(game->mlx.win, ft_keycode_input, game);
+	mlx_hook(game->mlx.win, 2, 1L << 0, ft_key_press, game);
+	mlx_hook(game->mlx.win, 3, 1L << 1, ft_key_release, game);
 	mlx_hook(game->mlx.win, 17, 0, ft_close_window, game);
-	// ft_raycast(game);
+	mlx_loop_hook(game->mlx.mlx, ft_game_loop, game);
 	mlx_loop(game->mlx.mlx);
 }

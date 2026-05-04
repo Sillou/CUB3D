@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 15:38:02 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 21:58:34 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 #  define BONUS 1
 # endif
 
-# define WIN_W 1280
-# define WIN_H 720
+# define WIN_W 2400
+# define WIN_H 1080
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.03
 
@@ -58,6 +58,8 @@ typedef struct s_keys
 	int	key_s;
 	int	key_d;
 	int	key_a;
+	int	key_left;
+	int	key_right;
 }	t_keys;
 
 typedef struct s_colors
@@ -192,7 +194,7 @@ void	init_start(t_game *game);
 /*init_mlx.c*/
 void	init_mlx(t_game *game);
 
-/*init_map2D.c*/
+/*init_player.c*/
 void	ft_init_player_dir(t_game *game);
 
 
@@ -212,7 +214,9 @@ void	ft_raycast(t_game *game);
 /************************************/
 
 /*moves.c*/
-int		ft_keycode_input(int key, t_game *game);
+int		ft_key_press(int key, t_game *game);
+int		ft_key_release(int key, t_game *game);
+int		ft_game_loop(t_game *game);
 
 /************************************/
 /*				EXIT				*/

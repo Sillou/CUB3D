@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/05/04 14:38:30 by alubrano         ###   ########.fr        #
+#    Updated: 2026/05/04 21:58:03 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ PARS =	check_args check_map parse_map parse_texture parse_color parse_utils\
 		check_valid_map	check_valid_map2
 
 INIT = 00_src/01_init/
-INI = init_to_start	init_mlx	init_map_2D
+INI = init_to_start	init_mlx	init_player
 
 RAYCASTING = 00_src/02_raycasting/
 RAYCAST = init_raycast	raycast

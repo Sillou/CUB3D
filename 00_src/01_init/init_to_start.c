@@ -6,11 +6,13 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:56:12 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 15:38:53 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 21:57:14 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	init_second(t_game *game);
 
 void	init_start(t_game *game)
 {
@@ -28,6 +30,12 @@ void	init_start(t_game *game)
 	game->player.dir_y = 0.0;
 	game->player.plane_x = 0.0;
 	game->player.plane_y = 0.0;
+	init_second(game);
+
+}
+
+static void	init_second(t_game *game)
+{
 	game->config.floor_set = 0;
 	game->config.floor.r = 0;
 	game->config.floor.g = 0;
@@ -42,4 +50,6 @@ void	init_start(t_game *game)
 	game->player.keys.key_s = 0;
 	game->player.keys.key_d = 0;
 	game->player.keys.key_a = 0;
+ 	game->player.keys.key_left = 0;
+ 	game->player.keys.key_right = 0;
 }
