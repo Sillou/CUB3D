@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:06:57 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 13:14:19 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:33:38 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,22 @@ static void	ft_move(t_game *game, double dx, double dy)
 
 int	ft_keycode_input(int key, t_game *game)
 {
-	if (key == 65361)
+	if (key == 65363 || key == 100)
 		ft_rotate(game, ROT_SPEED);
-	else if (key == 65363)
+	else if (key == 65361 || key == 97)
 		ft_rotate(game, -ROT_SPEED);
-	else if (key == 119 || key == 65362)
+	else if (key == 65362 || key == 119)
 		ft_move(game, game->player.dir_x * MOVE_SPEED,
 			game->player.dir_y * MOVE_SPEED);
-	else if (key == 115 || key == 65364)
+	else if (key == 65364 || key == 115)
 		ft_move(game, -game->player.dir_x * MOVE_SPEED,
 			-game->player.dir_y * MOVE_SPEED);
-	else if (key == 100)
-		ft_move(game, game->player.plane_x * MOVE_SPEED,
-			game->player.plane_y * MOVE_SPEED);
-	else if (key == 97)
-		ft_move(game, -game->player.plane_x * MOVE_SPEED,
-			-game->player.plane_y * MOVE_SPEED);
+	// else if (key == 100)
+	// 	ft_move(game, game->player.plane_x * MOVE_SPEED,
+			// game->player.plane_y * MOVE_SPEED);
+	// else if (key == 97)
+	// 	ft_move(game, -game->player.plane_x * MOVE_SPEED,
+	// 		-game->player.plane_y * MOVE_SPEED);
 	else if (key == 65307)
 		msg_error("EXIT GAME", NULL, game, 0);
 	ft_raycast(game);

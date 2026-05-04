@@ -6,11 +6,44 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:06:49 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 14:46:43 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:00:16 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	ft_put_pixel(t_game *game, int x, int y, unsigned int color);
+static void	ft_draw_bg(t_game *game);
+static void	ft_dda(t_game *game, t_ray *ray);
+static void	ft_draw_column(t_game *game, int x, t_ray *ray);
+
+void	ft_raycast(t_game *game)
+{
+	t_ray	ray;
+	int		x;
+
+	ft_draw_bg(game);
+	x = 0;
+	while (x < WIN_W)
+	{
+		ft_init_ray(game, &ray, x);
+		ft_dda(game, &ray);
+		if (ray.side == 0)
+			ray.perp_wall_dist = ray.side_dist_x - ray.delta_dist_x;
+		else
+			ray.perp_wall_dist = ray.side_dist_y - ray.delta_dist_y;
+		ray.line_height = (int)(WIN_H / ray.perp_wall_dist);
+		ray.draw_start = -ray.line_height / 2 + WIN_H / 2;
+		if (ray.draw_start < 0)
+			ray.draw_start = 0;
+		ray.draw_end = ray.line_height / 2 + WIN_H / 2;
+		if (ray.draw_end >= WIN_H)
+			ray.draw_end = WIN_H - 1;
+		ft_draw_column(game, x, &ray);
+		x++;
+	}
+	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
+}
 
 static void	ft_put_pixel(t_game *game, int x, int y, unsigned int color)
 {
@@ -84,32 +117,4 @@ static void	ft_draw_column(t_game *game, int x, t_ray *ray)
 		ft_put_pixel(game, x, y, color);
 		y++;
 	}
-}
-
-void	ft_raycast(t_game *game)
-{
-	t_ray	ray;
-	int		x;
-
-	ft_draw_bg(game);
-	x = 0;
-	while (x < WIN_W)
-	{
-		ft_init_ray(game, &ray, x);
-		ft_dda(game, &ray);
-		if (ray.side == 0)
-			ray.perp_wall_dist = ray.side_dist_x - ray.delta_dist_x;
-		else
-			ray.perp_wall_dist = ray.side_dist_y - ray.delta_dist_y;
-		ray.line_height = (int)(WIN_H / ray.perp_wall_dist);
-		ray.draw_start = -ray.line_height / 2 + WIN_H / 2;
-		if (ray.draw_start < 0)
-			ray.draw_start = 0;
-		ray.draw_end = ray.line_height / 2 + WIN_H / 2;
-		if (ray.draw_end >= WIN_H)
-			ray.draw_end = WIN_H - 1;
-		ft_draw_column(game, x, &ray);
-		x++;
-	}
-	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
 }

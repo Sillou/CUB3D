@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 14:37:58 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:38:02 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,18 @@
 /*				STRUCT				*/
 /************************************/
 
+typedef struct s_keys
+{
+	int	key_w;
+	int	key_s;
+	int	key_d;
+	int	key_a;
+}	t_keys;
+
 typedef struct s_colors
 {
 	unsigned int wall;
 	unsigned int floor;
-	unsigned int player;
 } t_colors;
 
 typedef struct s_map
@@ -95,6 +102,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	t_keys	keys;
 } t_player;
 
 typedef struct s_ray
@@ -134,7 +142,6 @@ typedef struct s_game
 	t_player	player;
 	t_mlx		mlx;
 	t_colors	colors;
-	int		tile;
 } t_game;
 
 /************************************/

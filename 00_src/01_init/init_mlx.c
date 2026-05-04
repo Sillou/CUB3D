@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:06:38 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 13:11:02 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:34:45 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	init_mlx(t_game *game)
 	ft_init_player_dir(game);
 	mlx_key_hook(game->mlx.win, ft_keycode_input, game);
 	mlx_hook(game->mlx.win, 17, 0, ft_close_window, game);
-	ft_raycast(game);
+	// ft_raycast(game);
 	mlx_loop(game->mlx.mlx);
 }
