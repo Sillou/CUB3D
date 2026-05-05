@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 21:58:34 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 22:54:31 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,23 @@ typedef struct s_keys
 
 typedef struct s_colors
 {
-	unsigned int wall;
-	unsigned int floor;
-} t_colors;
+	unsigned int	wall;
+	unsigned int	floor;
+}	t_colors;
 
 typedef struct s_map
 {
 	char	**full;
 	int		width;
 	int		hight;
-} t_map;
+}	t_map;
 
 typedef struct s_color
 {
 	int		r;
 	int		g;
 	int		b;
-} t_color;
+}	t_color;
 
 typedef struct s_config
 {
@@ -92,7 +92,7 @@ typedef struct s_config
 	t_color	ceiling;
 	int		floor_set;
 	int		ceiling_set;
-} t_config;
+}	t_config;
 
 typedef struct s_player
 {
@@ -105,7 +105,7 @@ typedef struct s_player
 	double	plane_x;
 	double	plane_y;
 	t_keys	keys;
-} t_player;
+}	t_player;
 
 typedef struct s_ray
 {
@@ -124,7 +124,26 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-} t_ray;
+}	t_ray;
+
+typedef struct s_tex
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}	t_tex;
+
+typedef struct s_textures
+{
+	t_tex	no;
+	t_tex	so;
+	t_tex	we;
+	t_tex	ea;
+}	t_textures;
 
 typedef struct s_mlx
 {
@@ -135,7 +154,7 @@ typedef struct s_mlx
 	int		bpp;
 	int		line_length;
 	int		endian;
-} t_mlx;
+}	t_mlx;
 
 typedef struct s_game
 {
@@ -144,94 +163,100 @@ typedef struct s_game
 	t_player	player;
 	t_mlx		mlx;
 	t_colors	colors;
-} t_game;
+	t_textures	textures;
+}	t_game;
 
 /************************************/
 /*				MAIN				*/
 /************************************/
 
 /*main.c*/
-int		main(int argc, char **argv);
+int				main(int argc, char **argv);
 
 /************************************/
 /*				PARSING				*/
 /************************************/
 
 /*check_args.c*/
-void	check_args(int argc, char **argv, t_game *game);
+void			check_args(int argc, char **argv, t_game *game);
 
 /*chech_map.c*/
-void	check_map(char *argv, t_game *game);
-void	add_map_line(char *line, t_game *game);
+void			check_map(char *argv, t_game *game);
+void			add_map_line(char *line, t_game *game);
 
 /*parse_map.c*/
-int		parse_befor_map(char *line, t_game *game);
+int				parse_befor_map(char *line, t_game *game);
 
 /*parse_texture.c*/
-void	ft_texture(char *line, t_game *game);
+void			ft_texture(char *line, t_game *game);
 
 /*parse_color.c*/
-void	add_color(char *line, char str, t_game *game, int i);
+void			add_color(char *line, char str, t_game *game, int i);
 
 /*pars_utils.c*/
-int		ft_is_space(char line);
-int		skip_spaces(char *line, int i);
+int				ft_is_space(char line);
+int				skip_spaces(char *line, int i);
 
 /*check_valid_map.c*/
-void	check_valid_map(t_game *game);
+void			check_valid_map(t_game *game);
 
 /*check_valid_map2.c*/
-void	check_color_range(t_color color, char *name, t_game *game);
-int		is_player(char c);
+void			check_color_range(t_color color, char *name, t_game *game);
+int				is_player(char c);
 
 /************************************/
 /*				INIT				*/
 /************************************/
 
 /*init_to_start.c*/
-void	init_start(t_game *game);
+void			init_start(t_game *game);
 
 /*init_mlx.c*/
-void	init_mlx(t_game *game);
+void			init_mlx(t_game *game);
+void			load_textures(t_game *game);
 
 /*init_player.c*/
-void	ft_init_player_dir(t_game *game);
-
+void			ft_init_player_dir(t_game *game);
 
 /************************************/
 /*				RAYCAST				*/
 /************************************/
 
 /*inti_raycast.c*/
-void	ft_init_ray(t_game *game, t_ray *ray, int x);
+void			ft_init_ray(t_game *game, t_ray *ray, int x);
 
 /*raycast.c*/
-void	ft_raycast(t_game *game);
+void			ft_raycast(t_game *game);
+
+/*texture.c*/
+void			ft_put_pixel(t_game *game, int x, int y, unsigned int color);
+unsigned int	get_texture_color(t_tex *tex, int tex_x, int tex_y);
+t_tex			*get_wall_texture(t_game *game, t_ray *ray);
+int				get_tex_x(t_game *game, t_ray *ray, t_tex *tex);
 
 /************************************/
 
-/*				MOVES				*/
+/*			MOVES				*/
 /************************************/
 
 /*moves.c*/
-int		ft_key_press(int key, t_game *game);
-int		ft_key_release(int key, t_game *game);
-int		ft_game_loop(t_game *game);
+int				ft_key_press(int key, t_game *game);
+int				ft_key_release(int key, t_game *game);
+int				ft_game_loop(t_game *game);
 
 /************************************/
 /*				EXIT				*/
 /************************************/
 
 /*close.c*/
-void	msg_error(char *str, char *error_msg, t_game *game, int code);
-void	ft_clean(t_game *game);
-int		ft_close_window(t_game *game);
-
+void			msg_error(char *str, char *error_msg, t_game *game, int code);
+void			ft_clean(t_game *game);
+int				ft_close_window(t_game *game);
 
 /*free_mem.c*/
-void	free_map(t_game *game);
-void	free_config(t_game *game);
-void	free_mlx(t_game *game);
-
+void			free_map(t_game *game);
+void			free_config(t_game *game);
+void			free_mlx(t_game *game);
+void			free_textures(t_game *game);
 
 #endif

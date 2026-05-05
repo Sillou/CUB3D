@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 15:09:16 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/30 18:11:33 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 22:42:01 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_clean(t_game *game)
 	if (game->config.no || game->config.so
 		|| game->config.we || game->config.ea)
 		free_config(game);
+	if (game->mlx.mlx)
+		free_textures(game);
 	if (game)
 		free_mlx(game);
 	free(game);

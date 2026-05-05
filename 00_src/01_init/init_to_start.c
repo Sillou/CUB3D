@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:56:12 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 21:57:14 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 22:55:54 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init_start(t_game *game)
 	game->player.plane_x = 0.0;
 	game->player.plane_y = 0.0;
 	init_second(game);
-
 }
 
 static void	init_second(t_game *game)
@@ -50,6 +49,6 @@ static void	init_second(t_game *game)
 	game->player.keys.key_s = 0;
 	game->player.keys.key_d = 0;
 	game->player.keys.key_a = 0;
- 	game->player.keys.key_left = 0;
- 	game->player.keys.key_right = 0;
+	game->player.keys.key_left = 0;
+	game->player.keys.key_right = 0;
 }

@@ -6,17 +6,18 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:06:49 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 15:00:16 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 22:58:01 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_put_pixel(t_game *game, int x, int y, unsigned int color);
 static void	ft_draw_bg(t_game *game);
 static void	ft_dda(t_game *game, t_ray *ray);
+static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex);
 static void	ft_draw_column(t_game *game, int x, t_ray *ray);
 
+// Lance le raycasting sur chaque colonne de l'écran et affiche le résultat
 void	ft_raycast(t_game *game)
 {
 	t_ray	ray;
@@ -45,17 +46,7 @@ void	ft_raycast(t_game *game)
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
 }
 
-static void	ft_put_pixel(t_game *game, int x, int y, unsigned int color)
-{
-	char	*dst;
-
-	if (x < 0 || y < 0 || x >= WIN_W || y >= WIN_H)
-		return ;
-	dst = game->mlx.addr + (y * game->mlx.line_length)
-		+ (x * (game->mlx.bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
+// Remplit l'arrière-plan avec la couleur du plafond et du sol
 static void	ft_draw_bg(t_game *game)
 {
 	unsigned int	ceil_c;
@@ -83,6 +74,7 @@ static void	ft_draw_bg(t_game *game)
 	}
 }
 
+// Algorithme DDA pour trouver le mur touché par le rayon
 static void	ft_dda(t_game *game, t_ray *ray)
 {
 	while (game->map.full[ray->map_y][ray->map_x] != '1')
@@ -102,19 +94,33 @@ static void	ft_dda(t_game *game, t_ray *ray)
 	}
 }
 
-static void	ft_draw_column(t_game *game, int x, t_ray *ray)
+// Dessine une colonne texturée à l'écran à la position x
+static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex)
 {
-	unsigned int	color;
-	int				y;
+	int		tex_x;
+	int		tex_y;
+	int		y;
+	double	step;
+	double	tex_pos;
 
-	if (ray->side == 0)
-		color = game->colors.wall;
-	else
-		color = (game->colors.wall >> 1) & 0x7F7F7F;
+	tex_x = get_tex_x(game, ray, tex);
+	step = 1.0 * tex->height / ray->line_height;
+	tex_pos = (ray->draw_start - WIN_H / 2 + ray->line_height / 2) * step;
 	y = ray->draw_start;
 	while (y <= ray->draw_end)
 	{
-		ft_put_pixel(game, x, y, color);
+		tex_y = (int)tex_pos & (tex->height - 1);
+		tex_pos += step;
+		ft_put_pixel(game, x, y, get_texture_color(tex, tex_x, tex_y));
 		y++;
 	}
+}
+
+// Sélectionne la bonne texture et dessine la colonne correspondante
+static void	ft_draw_column(t_game *game, int x, t_ray *ray)
+{
+	t_tex	*tex;
+
+	tex = get_wall_texture(game, ray);
+	draw_textured_line(game, x, ray, tex);
 }

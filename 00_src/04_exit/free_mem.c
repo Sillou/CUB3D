@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 23:04:30 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/30 18:11:33 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/04 22:42:00 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,16 @@ void	free_mlx(t_game *g)
 	if (g->mlx.mlx)
 		mlx_destroy_display(g->mlx.mlx);
 	free(g->mlx.mlx);
+}
+
+void	free_textures(t_game *game)
+{
+	if (game->textures.no.img)
+		mlx_destroy_image(game->mlx.mlx, game->textures.no.img);
+	if (game->textures.so.img)
+		mlx_destroy_image(game->mlx.mlx, game->textures.so.img);
+	if (game->textures.we.img)
+		mlx_destroy_image(game->mlx.mlx, game->textures.we.img);
+	if (game->textures.ea.img)
+		mlx_destroy_image(game->mlx.mlx, game->textures.ea.img);
 }

@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/05/04 21:58:03 by alubrano         ###   ########.fr        #
+#    Updated: 2026/05/04 22:48:59 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ INIT = 00_src/01_init/
 INI = init_to_start	init_mlx	init_player
 
 RAYCASTING = 00_src/02_raycasting/
-RAYCAST = init_raycast	raycast
+RAYCAST = init_raycast	raycast	texture
 
 MOVEMENTS = 00_src/03_movements/
 MOVES = moves
