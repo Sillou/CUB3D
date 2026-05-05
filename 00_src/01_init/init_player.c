@@ -17,6 +17,7 @@ static void	is_s(t_game *game);
 static void	is_e(t_game *game);
 static void	is_w(t_game *game);
 
+// Initialise la direction et la position du joueur selon la lettre trouvée sur la map
 void	ft_init_player_dir(t_game *game)
 {
 	char	c;
@@ -35,6 +36,7 @@ void	ft_init_player_dir(t_game *game)
 	game->map.full[game->player.y][game->player.x] = '0';
 }
 
+// Oriente le joueur vers le nord
 static void	is_n(t_game *game)
 {
 	game->player.dir_x = 0.0;
@@ -43,6 +45,7 @@ static void	is_n(t_game *game)
 	game->player.plane_y = 0.0;
 }
 
+// Oriente le joueur vers le sud
 static void	is_s(t_game *game)
 {
 	game->player.dir_x = 0.0;
@@ -51,6 +54,7 @@ static void	is_s(t_game *game)
 	game->player.plane_y = 0.0;
 }
 
+// Oriente le joueur vers l'est
 static void	is_e(t_game *game)
 {
 	game->player.dir_x = 1.0;
@@ -59,6 +63,7 @@ static void	is_e(t_game *game)
 	game->player.plane_y = 0.66;
 }
 
+// Oriente le joueur vers l'ouest
 static void	is_w(t_game *game)
 {
 	game->player.dir_x = -1.0;

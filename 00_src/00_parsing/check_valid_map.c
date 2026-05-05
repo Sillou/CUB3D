@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+// Vérifie que la configuration de la map est complète (textures et couleurs)
 static void	check_config_complete(t_game *game)
 {
 	if (!game->config.no || !game->config.so
@@ -23,6 +24,7 @@ static void	check_config_complete(t_game *game)
 		msg_error("Missing ceiling color (C)", NULL, game, 1);
 }
 
+// Vérifie les caractères de la map et la présence d'un seul joueur
 static void	check_map_chars(t_game *game)
 {
 	int	row;
@@ -52,6 +54,7 @@ static void	check_map_chars(t_game *game)
 		msg_error("Map must have exactly one player (N/S/E/W)", NULL, game, 1);
 }
 
+// Vérifie si une case de la map est ouverte (hors limites ou espace)
 static int	is_open(char **map, int row, int col, int height)
 {
 	int	len;
@@ -67,6 +70,7 @@ static int	is_open(char **map, int row, int col, int height)
 	return (0);
 }
 
+// Vérifie que la map est bien fermée (pas d'ouverture sur l'extérieur)
 static void	check_map_closed(t_game *game)
 {
 	int	row;

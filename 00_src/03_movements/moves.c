@@ -16,6 +16,7 @@
 static void	ft_rotate(t_game *game, double rot);
 static void	ft_move(t_game *game, double dx, double dy);
 
+// Fait tourner la direction du joueur d'un angle donné
 static void	ft_rotate(t_game *game, double rot)
 {
 	double	old_dir_x;
@@ -33,6 +34,7 @@ static void	ft_rotate(t_game *game, double rot)
 		+ game->player.plane_y * cos(rot);
 }
 
+// Déplace le joueur selon un vecteur (dx, dy) si la case n'est pas un mur
 static void	ft_move(t_game *game, double dx, double dy)
 {
 	double	new_x;
@@ -46,6 +48,7 @@ static void	ft_move(t_game *game, double dx, double dy)
 		game->player.pos_x = new_x;
 }
 
+// Gère l'appui sur une touche du clavier et met à jour l'état des touches du joueur
 int	ft_key_press(int key, t_game *game)
 {
 	if (key == 119)
@@ -65,6 +68,7 @@ int	ft_key_press(int key, t_game *game)
 	return (0);
 }
 
+// Gère le relâchement d'une touche du clavier et met à jour l'état des touches du joueur
 int	ft_key_release(int key, t_game *game)
 {
 	if (key == 119)

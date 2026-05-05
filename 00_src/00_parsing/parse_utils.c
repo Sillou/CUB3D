@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+// Retourne 1 si le caractère est un espace, une tabulation ou un saut de ligne
 int	ft_is_space(char line)
 {
 	if (line == ' ')
@@ -29,6 +30,7 @@ int	ft_is_space(char line)
 	return (0);
 }
 
+// Ignore les espaces au début d'une ligne et retourne l'indice du premier caractère non-espace
 int	skip_spaces(char *line, int i)
 {
 	while (ft_is_space(line[i]))

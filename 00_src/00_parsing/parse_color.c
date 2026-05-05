@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 21:52:55 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 18:34:15 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/06 01:07:09 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	add_f(char *line, int i, t_game *game);
 static void	add_c(char *line, int i, t_game *game);
 
+// Ajoute la couleur du sol ou du plafond à la configuration
 void	add_color(char *line, char str, t_game *game, int i)
 {
 	i++;
@@ -37,8 +38,10 @@ void	add_color(char *line, char str, t_game *game, int i)
 	}
 }
 
+// Ajoute la couleur du sol (Floor) à la configuration
 static void	add_f(char *line, int i, t_game *game)
 {
+	color_input(line, i, game, 1);
 	game->config.floor.r = ft_atoi(&line[i]);
 	while (ft_isdigit(line[i]))
 		i++;
@@ -52,8 +55,10 @@ static void	add_f(char *line, int i, t_game *game)
 	game->config.floor.b = ft_atoi(&line[i]);
 }
 
+// Ajoute la couleur du plafond (Ceiling) à la configuration
 static void	add_c(char *line, int i, t_game *game)
 {
+	color_input(line, i, game, 2);
 	game->config.ceiling.r = ft_atoi(&line[i]);
 	while (ft_isdigit(line[i]))
 		i++;

@@ -6,7 +6,7 @@
 #    By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/24 13:23:28 by alubrano          #+#    #+#              #
-#    Updated: 2026/05/04 22:48:59 by alubrano         ###   ########.fr        #
+#    Updated: 2026/05/06 01:09:04 by alubrano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ MAIN = 00_src/main
 
 PARSING = 00_src/00_parsing/
 PARS =	check_args check_map parse_map parse_texture parse_color parse_utils\
-		check_valid_map	check_valid_map2
+		check_valid_map	check_valid_map2 parse_color_utils
 
 INIT = 00_src/01_init/
 INI = init_to_start	init_mlx	init_player

@@ -14,6 +14,8 @@
 
 static char	*extract_texture_path(char *line, int i, t_game *game);
 
+// Analyse une ligne de texture et extrait le chemin du fichier XPM
+// Cette fonction identifie le type de texture (NO, SO, WE, EA) et stocke le chemin dans la config.
 void	ft_texture(char *line, t_game *game)
 {
 	int	i;
@@ -36,6 +38,7 @@ void	ft_texture(char *line, t_game *game)
 	}
 }
 
+// Extrait le chemin du fichier XPM à partir de la ligne et vérifie son existence
 static char	*extract_texture_path(char *line, int i, t_game *game)
 {
 	int		fd;

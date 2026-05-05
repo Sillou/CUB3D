@@ -12,6 +12,7 @@
 
 #include "cub3d.h"
 
+// Libère la mémoire allouée pour la map
 void	free_map(t_game *game)
 {
 	int	i;
@@ -26,6 +27,7 @@ void	free_map(t_game *game)
 	game->map.full = NULL;
 }
 
+// Libère la mémoire allouée pour les chemins de textures dans la config
 void	free_config(t_game *game)
 {
 	if (game->config.no)
@@ -50,6 +52,7 @@ void	free_config(t_game *game)
 	}
 }
 
+// Libère la mémoire et détruit les objets MLX
 void	free_mlx(t_game *g)
 {
 	if (g->mlx.img)
@@ -61,6 +64,7 @@ void	free_mlx(t_game *g)
 	free(g->mlx.mlx);
 }
 
+// Libère la mémoire des images de textures
 void	free_textures(t_game *game)
 {
 	if (game->textures.no.img)

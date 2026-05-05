@@ -13,6 +13,7 @@
 #include "cub3d.h"
 
 // Place un pixel de couleur à la position (x, y) dans l'image principale
+// Cette fonction écrit la couleur dans le buffer d'image à la position donnée.
 void	ft_put_pixel(t_game *game, int x, int y, unsigned int color)
 {
 	char	*dst;
@@ -25,6 +26,7 @@ void	ft_put_pixel(t_game *game, int x, int y, unsigned int color)
 }
 
 // Récupère la couleur d'un pixel (tex_x, tex_y) dans une texture
+// Cette fonction lit la couleur du pixel dans la texture à la position donnée.
 unsigned int	get_texture_color(t_tex *tex, int tex_x, int tex_y)
 {
 	char	*pixel;
@@ -37,6 +39,7 @@ unsigned int	get_texture_color(t_tex *tex, int tex_x, int tex_y)
 }
 
 // Retourne la texture à utiliser selon la direction du mur touché
+// Cette fonction choisit la texture murale selon la direction du rayon.
 t_tex	*get_wall_texture(t_game *game, t_ray *ray)
 {
 	if (ray->side == 0)
@@ -56,6 +59,7 @@ t_tex	*get_wall_texture(t_game *game, t_ray *ray)
 }
 
 // Calcule la coordonnée X sur la texture à partir de la position du mur touché
+// Cette fonction calcule la position horizontale sur la texture à partir de l'impact du rayon.
 int	get_tex_x(t_game *game, t_ray *ray, t_tex *tex)
 {
 	double	wall_x;

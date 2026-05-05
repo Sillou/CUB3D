@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 18:16:16 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 20:48:00 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/05 21:30:21 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int	is_texture(char *line, t_game *game);
 static int	is_empty_line(char *line);
 static int	is_map(char *line, t_game *game);
 
+// Analyse une ligne avant la map pour déterminer son type (texture, couleur, vide ou map)
 int	parse_befor_map(char *line, t_game *game)
 {
 	if (is_empty_line(line))
@@ -32,6 +33,7 @@ int	parse_befor_map(char *line, t_game *game)
 	return (0);
 }
 
+// Retourne 1 si la ligne correspond à une couleur (F ou C), sinon 0
 static int	is_color(char *line, t_game *game)
 {
 	int	i;
@@ -52,6 +54,7 @@ static int	is_color(char *line, t_game *game)
 	return (0);
 }
 
+// Retourne 1 si la ligne correspond à une texture (NO, SO, WE, EA), sinon 0
 static int	is_texture(char *line, t_game *game)
 {
 	int	i;
@@ -66,6 +69,7 @@ static int	is_texture(char *line, t_game *game)
 	return (0);
 }
 
+// Retourne 1 si la ligne correspond à une ligne de map (contient '1' ou '0'), sinon 0
 static int	is_map(char *line, t_game *game)
 {
 	int	i;
@@ -83,6 +87,7 @@ static int	is_map(char *line, t_game *game)
 	return (0);
 }
 
+// Retourne 1 si la ligne est vide ou ne contient que des espaces
 static int	is_empty_line(char *line)
 {
 	int	i;

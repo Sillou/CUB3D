@@ -6,12 +6,13 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:07:59 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 15:19:13 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/05 21:47:35 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// Vérifie que les valeurs de couleur sont dans l'intervalle 0-255
 void	check_color_range(t_color color, char *name, t_game *game)
 {
 	if (color.r < 0 || color.r > 255
@@ -20,6 +21,7 @@ void	check_color_range(t_color color, char *name, t_game *game)
 		msg_error("Color value out of range (0-255)", name, game, 1);
 }
 
+// Retourne vrai si le caractère correspond à un joueur (N, S, E ou W)
 int	is_player(char c)
 {
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');

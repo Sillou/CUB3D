@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:12:18 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 22:54:31 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/06 01:14:24 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define WG_INPUT3 "Wrong extention Ex : ./cub3d ./path_to_the_map/map.cub"
 # define WG_FILE "Is a directory"
 # define DOUBLE "Error: duplicate floor/ceiling color (F or C)"
+# define CORT " Incorrect input Ex : F/C 000,000,000"
 
 /************************************/
 /*				MACROS				*/
@@ -46,7 +47,7 @@
 # define WIN_W 2400
 # define WIN_H 1080
 # define MOVE_SPEED 0.05
-# define ROT_SPEED 0.03
+# define ROT_SPEED 0.05
 
 /************************************/
 /*				STRUCT				*/
@@ -192,6 +193,9 @@ void			ft_texture(char *line, t_game *game);
 
 /*parse_color.c*/
 void			add_color(char *line, char str, t_game *game, int i);
+
+/*parse_color_utils.c*/
+void			color_input(char *line, int i, t_game *game, int l);
 
 /*pars_utils.c*/
 int				ft_is_space(char line);

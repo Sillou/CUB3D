@@ -6,12 +6,13 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:15:42 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/30 18:05:26 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/05 21:26:21 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// Lit le fichier de la carte et construit la structure de la map
 void	check_map(char *argv, t_game *game)
 {
 	int		fd;
@@ -41,6 +42,7 @@ void	check_map(char *argv, t_game *game)
 	return ;
 }
 
+// Ajoute une ligne à la map en l'allouant dynamiquement
 void	add_map_line(char *line, t_game *game)
 {
 	char	**new_map;

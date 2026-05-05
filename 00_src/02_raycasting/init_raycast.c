@@ -17,6 +17,8 @@ static void	ray_right(t_game *game, t_ray *ray);
 static void	ray_up(t_game *game, t_ray *ray);
 static void	ray_down(t_game *game, t_ray *ray);
 
+// Initialise les paramètres du rayon pour une colonne donnée de l'écran
+// Calcule la direction du rayon, les distances initiales et les pas pour le DDA.
 void	ft_init_ray(t_game *game, t_ray *ray, int x)
 {
 	double	cam;
@@ -44,6 +46,7 @@ void	ft_init_ray(t_game *game, t_ray *ray, int x)
 		ray_down(game, ray);
 }
 
+// Initialise les paramètres pour un rayon allant vers la gauche
 static void	ray_left(t_game *game, t_ray *ray)
 {
 	ray->step_x = -1;
@@ -51,6 +54,7 @@ static void	ray_left(t_game *game, t_ray *ray)
 		* ray->delta_dist_x;
 }
 
+// Initialise les paramètres pour un rayon allant vers la droite
 static void	ray_right(t_game *game, t_ray *ray)
 {
 	ray->step_x = 1;
@@ -58,6 +62,7 @@ static void	ray_right(t_game *game, t_ray *ray)
 		* ray->delta_dist_x;
 }
 
+// Initialise les paramètres pour un rayon allant vers le haut
 static void	ray_up(t_game *game, t_ray *ray)
 {
 	ray->step_y = -1;
@@ -65,6 +70,7 @@ static void	ray_up(t_game *game, t_ray *ray)
 		* ray->delta_dist_y;
 }
 
+// Initialise les paramètres pour un rayon allant vers le bas
 static void	ray_down(t_game *game, t_ray *ray)
 {
 	ray->step_y = 1;
