@@ -14,7 +14,7 @@
 
 static void	print_error(char *str, char *error_msg);
 
-// Affiche un message d'erreur, libère la mémoire et quitte le programme
+/* Prints an error message, frees memory, and exits the program */
 void	msg_error(char *str, char *error_msg, t_game *game, int code)
 {
 	if (code != 0)
@@ -25,7 +25,7 @@ void	msg_error(char *str, char *error_msg, t_game *game, int code)
 	exit(code);
 }
 
-// Libère toute la mémoire allouée pour le jeu
+/* Frees all memory allocated for the game */
 void	ft_clean(t_game *game)
 {
 	if (!game)
@@ -42,7 +42,7 @@ void	ft_clean(t_game *game)
 	free(game);
 }
 
-// Affiche le message d'erreur sur la sortie d'erreur
+/* Prints the error message to stderr */
 static void	print_error(char *str, char *error_msg)
 {
 	ft_putendl_fd("Error", 2);
@@ -56,7 +56,7 @@ static void	print_error(char *str, char *error_msg)
 	ft_putstr_fd("\n", 2);
 }
 
-// Ferme proprement la fenêtre et quitte le jeu
+/* Cleanly closes the window and exits the game */
 int	ft_close_window(t_game *game)
 {
 	ft_putendl_fd("EXIT GAME", 1);

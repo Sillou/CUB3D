@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 14:49:41 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/06 00:06:13 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:14:11 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static bool	is_dir(char *argv);
 static void	check_file(char *argv, t_game *game);
 
-// Vérifie les arguments passés au programme et la validité du fichier de la carte
+/* Checks arguments passed to the program and validates the map file */
 void	check_args(int argc, char **argv, t_game *game)
 {
 	int	i;
@@ -33,7 +33,7 @@ void	check_args(int argc, char **argv, t_game *game)
 	check_map(argv[1], game);
 }
 
-// Vérifie si le chemin donné correspond à un dossier
+/*Checks if the given path is a directory*/
 static bool	is_dir(char *argv)
 {
 	int		fd;
@@ -49,7 +49,7 @@ static bool	is_dir(char *argv)
 	return (ret);
 }
 
-// Vérifie si le fichier existe et peut être ouvert
+/*Checks if the file exists and can be opened?*/
 static void	check_file(char *argv, t_game *game)
 {
 	int	fd;

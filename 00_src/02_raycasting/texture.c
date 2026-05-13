@@ -6,14 +6,14 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 22:50:00 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 22:58:01 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:19:54 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// Place un pixel de couleur à la position (x, y) dans l'image principale
-// Cette fonction écrit la couleur dans le buffer d'image à la position donnée.
+/* Places a colored pixel at position (x, y) in the main image buffer */
+/* Writes the color into the image buffer at the given position. */
 void	ft_put_pixel(t_game *game, int x, int y, unsigned int color)
 {
 	char	*dst;
@@ -25,8 +25,8 @@ void	ft_put_pixel(t_game *game, int x, int y, unsigned int color)
 	*(unsigned int *)dst = color;
 }
 
-// Récupère la couleur d'un pixel (tex_x, tex_y) dans une texture
-// Cette fonction lit la couleur du pixel dans la texture à la position donnée.
+/* Retrieves the color of pixel (tex_x, tex_y) from a texture */
+/* Reads the pixel color from the texture at the given position. */
 unsigned int	get_texture_color(t_tex *tex, int tex_x, int tex_y)
 {
 	char	*pixel;
@@ -38,8 +38,7 @@ unsigned int	get_texture_color(t_tex *tex, int tex_x, int tex_y)
 	return (*(unsigned int *)pixel);
 }
 
-// Retourne la texture à utiliser selon la direction du mur touché
-// Cette fonction choisit la texture murale selon la direction du rayon.
+/* Chooses the wall texture according to the ray direction. */
 t_tex	*get_wall_texture(t_game *game, t_ray *ray)
 {
 	if (ray->side == 0)
@@ -58,8 +57,7 @@ t_tex	*get_wall_texture(t_game *game, t_ray *ray)
 	}
 }
 
-// Calcule la coordonnée X sur la texture à partir de la position du mur touché
-// Cette fonction calcule la position horizontale sur la texture à partir de l'impact du rayon.
+/* Computes the X coordinate on the texture from the wall hit position */
 int	get_tex_x(t_game *game, t_ray *ray, t_tex *tex)
 {
 	double	wall_x;

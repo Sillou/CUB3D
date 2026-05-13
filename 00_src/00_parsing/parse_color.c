@@ -15,7 +15,7 @@
 static void	add_f(char *line, int i, t_game *game);
 static void	add_c(char *line, int i, t_game *game);
 
-// Ajoute la couleur du sol ou du plafond à la configuration
+/* Adds the floor or ceiling color to the configuration */
 void	add_color(char *line, char str, t_game *game, int i)
 {
 	i++;
@@ -38,7 +38,7 @@ void	add_color(char *line, char str, t_game *game, int i)
 	}
 }
 
-// Ajoute la couleur du sol (Floor) à la configuration
+/* Adds the floor color to the configuration */
 static void	add_f(char *line, int i, t_game *game)
 {
 	color_input(line, i, game, 1);
@@ -55,7 +55,7 @@ static void	add_f(char *line, int i, t_game *game)
 	game->config.floor.b = ft_atoi(&line[i]);
 }
 
-// Ajoute la couleur du plafond (Ceiling) à la configuration
+/* Adds the ceiling color to the configuration */
 static void	add_c(char *line, int i, t_game *game)
 {
 	color_input(line, i, game, 2);

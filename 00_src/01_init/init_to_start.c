@@ -14,7 +14,7 @@
 
 static void	init_second(t_game *game);
 
-// Initialise toutes les valeurs de la structure t_game à leur valeur de départ
+/* Initializes all values of the t_game structure to their starting values */
 void	init_start(t_game *game)
 {
 	game->config.no = NULL;
@@ -34,7 +34,7 @@ void	init_start(t_game *game)
 	init_second(game);
 }
 
-// Initialise les valeurs secondaires de la structure t_game
+/* Initializes secondary values of the t_game structure */
 static void	init_second(t_game *game)
 {
 	game->config.floor_set = 0;

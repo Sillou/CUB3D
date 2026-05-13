@@ -17,7 +17,7 @@ static void	expect_number(char *line, int *i, t_game *game, int l);
 static void	expect_comma(char *line, int *i, t_game *game, int l);
 static void	moves_spaces(char *line, int *i);
 
-//Verifie la bonne logique d'entree pour le couleurs
+/* Validates the input format for colors */
 void	color_input(char *line, int i, t_game *game, int l)
 {
 	expect_number(line, &i, game, l);
@@ -30,7 +30,7 @@ void	color_input(char *line, int i, t_game *game, int l)
 		msg_error("Wrong line F/C", CORT, game, 1);
 }
 
-// Saute tous les espaces et verifie que c'est bies un numbre
+/* Skips all spaces and verifies the next token is a number */
 static void	expect_number(char *line, int *i, t_game *game, int l)
 {
 	moves_spaces(line, i);
@@ -45,7 +45,7 @@ static void	expect_number(char *line, int *i, t_game *game, int l)
 		(*i)++;
 }
 
-// Saute tous les espaces et verifie que c'est bies une virgule
+/* Skips all spaces and verifies the next token is a comma */
 static void	expect_comma(char *line, int *i, t_game *game, int l)
 {
 	moves_spaces(line, i);
@@ -59,7 +59,7 @@ static void	expect_comma(char *line, int *i, t_game *game, int l)
 	(*i)++;
 }
 
-//Skipe les espaces en avance l'adresse directement
+/* Skips whitespace by advancing the index directly */
 static void	moves_spaces(char *line, int *i)
 {
 	while (ft_is_space(line[*i]))

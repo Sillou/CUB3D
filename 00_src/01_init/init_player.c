@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map_2D.c                                      :+:      :+:    :+:   */
+/*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:04:47 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/04 14:46:26 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:18:45 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	is_s(t_game *game);
 static void	is_e(t_game *game);
 static void	is_w(t_game *game);
 
-// Initialise la direction et la position du joueur selon la lettre trouvée sur la map
+/* Initializes the player direction and position
+	based on the character found on the map */
 void	ft_init_player_dir(t_game *game)
 {
 	char	c;
@@ -36,7 +37,7 @@ void	ft_init_player_dir(t_game *game)
 	game->map.full[game->player.y][game->player.x] = '0';
 }
 
-// Oriente le joueur vers le nord
+/* Orients the player facing north */
 static void	is_n(t_game *game)
 {
 	game->player.dir_x = 0.0;
@@ -45,7 +46,7 @@ static void	is_n(t_game *game)
 	game->player.plane_y = 0.0;
 }
 
-// Oriente le joueur vers le sud
+/* Orients the player facing south */
 static void	is_s(t_game *game)
 {
 	game->player.dir_x = 0.0;
@@ -54,7 +55,7 @@ static void	is_s(t_game *game)
 	game->player.plane_y = 0.0;
 }
 
-// Oriente le joueur vers l'est
+/* Orients the player facing east */
 static void	is_e(t_game *game)
 {
 	game->player.dir_x = 1.0;
@@ -63,7 +64,7 @@ static void	is_e(t_game *game)
 	game->player.plane_y = 0.66;
 }
 
-// Oriente le joueur vers l'ouest
+/* Orients the player facing west */
 static void	is_w(t_game *game)
 {
 	game->player.dir_x = -1.0;

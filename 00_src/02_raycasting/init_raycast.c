@@ -17,8 +17,8 @@ static void	ray_right(t_game *game, t_ray *ray);
 static void	ray_up(t_game *game, t_ray *ray);
 static void	ray_down(t_game *game, t_ray *ray);
 
-// Initialise les paramètres du rayon pour une colonne donnée de l'écran
-// Calcule la direction du rayon, les distances initiales et les pas pour le DDA.
+/* Initializes ray parameters for a given screen column */
+/* Computes ray direction, initial distances, and DDA step values. */
 void	ft_init_ray(t_game *game, t_ray *ray, int x)
 {
 	double	cam;
@@ -29,11 +29,11 @@ void	ft_init_ray(t_game *game, t_ray *ray, int x)
 	ray->map_x = (int)game->player.pos_x;
 	ray->map_y = (int)game->player.pos_y;
 	if (ray->ray_dir_x == 0)
-		ray->delta_dist_x = 1e30; // Nbr infini car ne touchera jamais ligne vertical
+		ray->delta_dist_x = 1e30; /* Infinite value: ray never crosses a vertical line */
 	else
 		ray->delta_dist_x = fabs(1.0 / ray->ray_dir_x);
 	if (ray->ray_dir_y == 0)
-		ray->delta_dist_y = 1e30; // Nombre infin car ne touchera jamais ligne horizontal
+		ray->delta_dist_y = 1e30; /* Infinite value: ray never crosses a horizontal line */
 	else
 		ray->delta_dist_y = fabs(1.0 / ray->ray_dir_y);
 	if (ray->ray_dir_x < 0)
@@ -46,7 +46,7 @@ void	ft_init_ray(t_game *game, t_ray *ray, int x)
 		ray_down(game, ray);
 }
 
-// Initialise les paramètres pour un rayon allant vers la gauche
+/* Initializes parameters for a ray going left */
 static void	ray_left(t_game *game, t_ray *ray)
 {
 	ray->step_x = -1;
@@ -54,7 +54,7 @@ static void	ray_left(t_game *game, t_ray *ray)
 		* ray->delta_dist_x;
 }
 
-// Initialise les paramètres pour un rayon allant vers la droite
+/* Initializes parameters for a ray going right */
 static void	ray_right(t_game *game, t_ray *ray)
 {
 	ray->step_x = 1;
@@ -62,7 +62,7 @@ static void	ray_right(t_game *game, t_ray *ray)
 		* ray->delta_dist_x;
 }
 
-// Initialise les paramètres pour un rayon allant vers le haut
+/* Initializes parameters for a ray going up */
 static void	ray_up(t_game *game, t_ray *ray)
 {
 	ray->step_y = -1;
@@ -70,7 +70,7 @@ static void	ray_up(t_game *game, t_ray *ray)
 		* ray->delta_dist_y;
 }
 
-// Initialise les paramètres pour un rayon allant vers le bas
+/* Initializes parameters for a ray going down */
 static void	ray_down(t_game *game, t_ray *ray)
 {
 	ray->step_y = 1;

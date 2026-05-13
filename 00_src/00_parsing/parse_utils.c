@@ -6,13 +6,13 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 22:36:48 by alubrano          #+#    #+#             */
-/*   Updated: 2026/04/29 20:51:11 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:18:33 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// Retourne 1 si le caractère est un espace, une tabulation ou un saut de ligne
+/* Returns 1 if the character is a space, tab, or newline */
 int	ft_is_space(char line)
 {
 	if (line == ' ')
@@ -30,7 +30,8 @@ int	ft_is_space(char line)
 	return (0);
 }
 
-// Ignore les espaces au début d'une ligne et retourne l'indice du premier caractère non-espace
+/* Skips leading whitespace in a line
+	and returns the index of the first non-space character */
 int	skip_spaces(char *line, int i)
 {
 	while (ft_is_space(line[i]))

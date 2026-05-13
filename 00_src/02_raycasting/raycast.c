@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:06:49 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/05 21:22:51 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:19:29 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ static void	ft_dda(t_game *game, t_ray *ray);
 static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex);
 static void	ft_draw_column(t_game *game, int x, t_ray *ray);
 
-// Fonction principale de raycasting : lance le raycasting sur chaque colonne de l'écran et affiche le résultat
-// Cette fonction calcule pour chaque colonne de l'écran la distance au mur, la hauteur à dessiner et affiche la scène 3D.
+/*Computes wall distance, draw height, and renders the 3D scene for each column. */
 void	ft_raycast(t_game *game)
 {
 	t_ray	ray;
@@ -47,8 +46,7 @@ void	ft_raycast(t_game *game)
 	mlx_put_image_to_window(game->mlx.mlx, game->mlx.win, game->mlx.img, 0, 0);
 }
 
-// Remplit l'arrière-plan avec la couleur du plafond et du sol
-// Cette fonction colore la moitié supérieure de l'écran avec la couleur du plafond et la moitié inférieure avec celle du sol.
+/* Fills the background with ceiling and floor colors */
 static void	ft_draw_bg(t_game *game)
 {
 	unsigned int	ceil_c;
@@ -76,8 +74,8 @@ static void	ft_draw_bg(t_game *game)
 	}
 }
 
-// Algorithme DDA pour trouver le mur touché par le rayon
-// Cette fonction avance le rayon dans la carte jusqu'à ce qu'il touche un mur, en utilisant l'algorithme DDA.
+/* DDA algorithm to find the wall hit by the ray */
+/* Advances the ray through the map until it hits a wall. */
 static void	ft_dda(t_game *game, t_ray *ray)
 {
 	while (game->map.full[ray->map_y][ray->map_x] != '1')
@@ -97,8 +95,8 @@ static void	ft_dda(t_game *game, t_ray *ray)
 	}
 }
 
-// Dessine une colonne texturée à l'écran à la position x
-// Cette fonction récupère la couleur de chaque pixel de la texture et l'affiche sur la colonne correspondante à l'écran.
+/* Draws a textured column on screen at position x */
+/* Retrieves each pixel color from the texture and writes it to the corresponding screen column. */
 static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex)
 {
 	int		tex_x;
@@ -120,8 +118,8 @@ static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex)
 	}
 }
 
-// Sélectionne la bonne texture et dessine la colonne correspondante
-// Cette fonction choisit la texture à utiliser selon la direction du mur touché et dessine la colonne à l'écran.
+/* Selects the correct texture and draws the corresponding column */
+/* Chooses the texture based on the wall direction hit and draws the column on screen. */
 static void	ft_draw_column(t_game *game, int x, t_ray *ray)
 {
 	t_tex	*tex;

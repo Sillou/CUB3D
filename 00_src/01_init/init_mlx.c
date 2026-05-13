@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-// Charge une texture XPM et initialise ses paramètres
+/* Loads an XPM texture and initializes its parameters */
 static void	load_texture(t_game *game, t_tex *tex, char *path)
 {
 	tex->img = mlx_xpm_file_to_image(game->mlx.mlx, path,
@@ -26,7 +26,7 @@ static void	load_texture(t_game *game, t_tex *tex, char *path)
 			&tex->line_length, &tex->endian);
 }
 
-// Charge toutes les textures nécessaires au jeu
+/* Loads all textures needed for the game */
 void	load_textures(t_game *game)
 {
 	load_texture(game, &game->textures.no, game->config.no);
@@ -35,7 +35,7 @@ void	load_textures(t_game *game)
 	load_texture(game, &game->textures.ea, game->config.ea);
 }
 
-// Initialise la fenêtre, l'image principale et les hooks MLX
+/* Initializes the window, main image, and MLX hooks */
 void	init_mlx(t_game *game)
 {
 	game->mlx.mlx = mlx_init();

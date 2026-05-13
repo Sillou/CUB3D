@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-// Vérifie que les valeurs de couleur sont dans l'intervalle 0-255
+/* Checks that color values are within the 0-255 range */
 void	check_color_range(t_color color, char *name, t_game *game)
 {
 	if (color.r < 0 || color.r > 255
@@ -21,7 +21,7 @@ void	check_color_range(t_color color, char *name, t_game *game)
 		msg_error("Color value out of range (0-255)", name, game, 1);
 }
 
-// Retourne vrai si le caractère correspond à un joueur (N, S, E ou W)
+/* Returns true if the character corresponds to a player (N, S, E or W) */
 int	is_player(char c)
 {
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
