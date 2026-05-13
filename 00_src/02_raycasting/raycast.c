@@ -6,7 +6,7 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:06:49 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/13 15:19:29 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:22:26 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	ft_dda(t_game *game, t_ray *ray);
 static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex);
 static void	ft_draw_column(t_game *game, int x, t_ray *ray);
 
-/*Computes wall distance, draw height, and renders the 3D scene for each column. */
+/*Computes wall distance, draw height,
+	and renders the 3D scene for each column. */
 void	ft_raycast(t_game *game)
 {
 	t_ray	ray;
@@ -95,8 +96,8 @@ static void	ft_dda(t_game *game, t_ray *ray)
 	}
 }
 
-/* Draws a textured column on screen at position x */
-/* Retrieves each pixel color from the texture and writes it to the corresponding screen column. */
+/* Retrieves each pixel color from the texture
+	and writes it to the corresponding screen column. */
 static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex)
 {
 	int		tex_x;
@@ -119,7 +120,6 @@ static void	draw_textured_line(t_game *game, int x, t_ray *ray, t_tex *tex)
 }
 
 /* Selects the correct texture and draws the corresponding column */
-/* Chooses the texture based on the wall direction hit and draws the column on screen. */
 static void	ft_draw_column(t_game *game, int x, t_ray *ray)
 {
 	t_tex	*tex;

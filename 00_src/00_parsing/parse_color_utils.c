@@ -6,12 +6,11 @@
 /*   By: alubrano <alubrano@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 00:51:54 by alubrano          #+#    #+#             */
-/*   Updated: 2026/05/06 01:10:03 by alubrano         ###   ########.fr       */
+/*   Updated: 2026/05/13 15:21:28 by alubrano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 static void	expect_number(char *line, int *i, t_game *game, int l);
 static void	expect_comma(char *line, int *i, t_game *game, int l);
